@@ -27,7 +27,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('home'); ?>">
                 <div class="sidebar-brand-icon">
                 <img src="<?= base_url() ?>/assets/img/smansi.png" alt="SMA Negeri 1 Kesesi" width="50" height="50">
                 </div>
@@ -39,7 +39,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('home'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -54,17 +54,17 @@
             
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url("kriteria") ?>">
+                <a class="nav-link" href="<?= base_url("/home/kriteria") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Kriteria</span></a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url("siswa") ?>">
+                <a class="nav-link" href="<?= base_url("/home/siswa") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Siswa</span></a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url("perhitungan") ?>">
+                <a class="nav-link" href="<?= base_url("/home/perhitungan") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Perhitungan</span></a>
             </li> 

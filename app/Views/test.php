@@ -48,6 +48,7 @@
             </tr>
         </thead>
         <tbody>
+            <!-- if = (?) else (:) -->
             <?php foreach($data as $value):?>
             <?php 
                 $tanggungan_orang_tua = byNamaKriteria('tanggungan orang tua')['jenis_kriteria'] == 'benefit' 
