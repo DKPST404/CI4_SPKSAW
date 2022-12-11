@@ -7,6 +7,7 @@ class Home extends BaseController
     public function __construct()
     {
         $this->M_siswa = new \App\Models\M_siswa();
+        $this->M_kriteria = new \App\Models\M_kriteria();
         // Load the helper
         helper('url');
     }
@@ -22,9 +23,24 @@ class Home extends BaseController
 
     public function debug(){
         $data =[
-            'tertinggi'=> $this->M_siswa->penghasilan_orangtua_tertinggi(),
             'data' => $this->M_siswa->findAll(),
         ];
         return view('test', $data);
+    }
+    public function siswa(){
+        $data = [
+            'title' => 'Data Siswa',
+            'siswa' => $this->M_siswa->findAll(),
+        ];
+        // dd($data);
+        return view('siswa', $data);
+    }
+    public function kriteria(){
+        $data = [
+            'title' => 'Data Kriteria',
+            'kriteria' => $this->M_kriteria->findAll(),
+        ];
+        // dd($data);
+        return view('kriteria', $data);
     }
 }

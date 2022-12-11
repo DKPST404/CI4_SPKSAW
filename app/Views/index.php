@@ -38,7 +38,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -54,31 +54,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kriteria</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
+                <a class="nav-link" href="<?= base_url('kriteria'); ?>">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Kriteria</span></a>
+            </li> 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Siswa</span>
-                </a>
-                
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
+                <a class="nav-link" href="<?= base_url('siswa'); ?>">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Siswa</span></a>
+            </li> 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Perhitungan</span>
-                </a>
-            </li>
+                <a class="nav-link" href="<?= base_url('perhitungan'); ?>">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Perhitungan</span></a>
+            </li> 
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -167,49 +156,14 @@
 
                     </ul>
                 </nav> 
-    </div>
+                
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 <div class="isi" style="background-color: white !important">
                 
                     <!-- Page Heading -->
-                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div> -->
-                    <table id="table_id" class="table table-striped">
-                    <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>NISN</th>
-                                <th>Nama 2</th>
-                                <th>Kelas</th>
-                                <th>Alamat</th>
-                                <th>Periode</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($siswa as $data_siswa) : ?>
-                            <tr>
-                                <td><?= $data_siswa['id_siswa'] ?></td>
-                                <td><?= $data_siswa['nis_siswa'] ?></td>
-                                <td><?= $data_siswa['nama_siswa'] ?></td>
-                                <td><?= $data_siswa['kelas_siswa'] ?></td>
-                                <td><?= $data_siswa['alamat_siswa'] ?></td>
-                                <td><?= $data_siswa['periode'] ?></td>
-
-                                <td>
-                                    <a href="<?= base_url('siswa/edit/'.$data_siswa['id_siswa']) ?>" class="btn btn-warning">Edit</a>
-                                    <a href="<?= base_url('siswa/delete/'.$data_siswa['id_siswa']) ?>" class="btn btn-danger">Delete</a>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
+               
                 <!-- /.container-fluid -->
             
             <!-- End of Main Content -->

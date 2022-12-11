@@ -10,13 +10,13 @@
     <title>Sistem Pendukung Keputusan</title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url()?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url()?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
 
@@ -29,7 +29,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                <img src="<?= base_url()?>/assets/img/smansi.png" alt="SMA Negeri 1 Kesesi" width="50" height="50">
+                <img src="<?= base_url() ?>/assets/img/smansi.png" alt="SMA Negeri 1 Kesesi" width="50" height="50">
                 </div>
                 <div class="sidebar-brand-text mx-3">SMA Negeri 1 Kesesi <sup></sup></div>
             </a>
@@ -54,17 +54,17 @@
             
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('kriteria'); ?>">
+                <a class="nav-link" href="<?= base_url("kriteria") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Kriteria</span></a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('siswa'); ?>">
+                <a class="nav-link" href="<?= base_url("siswa") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Siswa</span></a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('perhitungan'); ?>">
+                <a class="nav-link" href="<?= base_url("perhitungan") ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Perhitungan</span></a>
             </li> 
@@ -129,7 +129,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle"
-                                    src="<?= base_url()?>/assets/img/undraw_profile.svg">
+                                    src="<?= base_url() ?>/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -143,7 +143,6 @@
 
                     </ul>
                 </nav> 
-    </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -154,32 +153,32 @@
                     <thead>
                             <tr>
                                 <th>No</th>
-                                <th>NISN</th>
-                                <th>Nama 2</th>
-                                <th>Kelas</th>
-                                <th>Alamat</th>
-                                <th>Periode</th>
+                                <th>Nama Kriteria</th>
+                                <th>Bobot Kriteria</th>
+                                <th>Jenis Kriteria</th>
+                                <th>Status Kriteria</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($siswa as $data_siswa) : ?>
+                            <?php foreach ($kriteria as $k): ?>
                             <tr>
-                                <td><?= $data_siswa['id_siswa'] ?></td>
-                                <td><?= $data_siswa['nis_siswa'] ?></td>
-                                <td><?= $data_siswa['nama_siswa'] ?></td>
-                                <td><?= $data_siswa['kelas_siswa'] ?></td>
-                                <td><?= $data_siswa['alamat_siswa'] ?></td>
-                                <td><?= $data_siswa['periode'] ?></td>
+                                <td><?= $k["id_kriteria"] ?></td>
+                                <td><?= $k["nama_kriteria"] ?></td>
+                                <td><?= $k["bobot_kriteria"] ?> %</td>
+                                <td><?= $k["jenis_kriteria"] ?></td>
+                                <td>Aktif</td>
                                 <td>
-                                    <a href="<?= base_url('siswa/edit/'.$data_siswa['id_siswa']) ?>" class="btn btn-warning">Edit</a>
-                                    <a href="<?= base_url('siswa/delete/'.$data_siswa['id_siswa']) ?>" class="btn btn-danger">Delete</a>
+                                    <a href="<?= base_url(
+                                        "kriteria/edit/" . $k["id_kriteria"]
+                                    ) ?>" class="btn btn-warning">Edit</a>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                     </div>
                 </div>
+            </div>
                 <!-- /.container-fluid -->
             
             <!-- End of Main Content -->
@@ -225,23 +224,22 @@
         </div>
     </div>
 
-    
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url()?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url()?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url()?>/assets/js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?= base_url()?>/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?= base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url()?>/assets/js/demo/chart-area-demo.js"></script>
-    <script src="<?= base_url()?>/assets/js/demo/chart-pie-demo.js"></script>
+    <script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
+    <script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
