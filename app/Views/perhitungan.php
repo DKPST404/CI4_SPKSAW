@@ -153,27 +153,21 @@
                     <table id="table_id" class="table table-striped">
                     <thead>
                             <tr>
-                                <th>No</th>
-                                <th>NISN</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Alamat</th>
-                                <th>Periode</th>
-                                <th>Action</th>
+                                <th>Ranking</th>
+                                <th>NIS Siswa</th>
+                                <th>Nama Siswa</th>
+                                <th>Hasil Perhitungan</th>
+                                <th>Tahun Masuk</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($siswa as $data_siswa) : ?>
                             <tr>
-                                <td><?= $data_siswa['id_siswa'] ?></td>
-                                <td><?= $data_siswa['nis_siswa'] ?></td>
-                                <td><?= $data_siswa['nama_siswa'] ?></td>
-                                <td><?= $data_siswa['kelas_siswa'] ?></td>
-                                <td><?= $data_siswa['alamat_siswa'] ?></td>
-                                <td><?= $data_siswa['periode'] ?></td>
-                                <td>
-                                    <a href="<?= base_url('siswa/edit/'.$data_siswa['id_siswa']) ?>" class="btn btn-warning">Edit</a>
-                                    <a href="<?= base_url('siswa/delete/'.$data_siswa['id_siswa']) ?>" class="btn btn-danger">Delete</a>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

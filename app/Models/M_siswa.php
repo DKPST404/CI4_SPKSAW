@@ -13,7 +13,7 @@ class M_siswa extends Model
 
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['id_siswa', 'nama_siswa', 'kelas_siswa','alamat_siswa','periode'];
+    protected $allowedFields = ['id_siswa', 'nama_siswa', 'kelas_siswa','alamat_siswa','periode','tanggungan_orang_tua','penghasilan_orang_tua','nilai_kehadiran','nilai_rapot','peringkat'];
 
     public function penghasilan_orangtua_tertinggi(){
         return $query = $this->db->query("SELECT MAX(penghasilan_orang_tua) FROM datasiswa")->getResultArray();

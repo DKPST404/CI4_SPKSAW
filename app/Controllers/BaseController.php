@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['find_db'];
+    protected $helpers = ['find_db', 'hitung_saw'];
 
     /**
      * Constructor.
