@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +11,13 @@
     <title>Sistem Pendukung Keputusan</title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url()?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="<?= base_url() ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url()?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -29,7 +29,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('home'); ?>">
                 <div class="sidebar-brand-icon">
-                <img src="<?= base_url()?>/assets/img/smansi.png" alt="SMA Negeri 1 Kesesi" width="50" height="50">
+                    <img src="<?= base_url() ?>/assets/img/smansi.png" alt="SMA Negeri 1 Kesesi" width="50" height="50">
                 </div>
                 <div class="sidebar-brand-text mx-3">SMA Negeri 1 Kesesi <sup></sup></div>
             </a>
@@ -51,23 +51,23 @@
             <div class="sidebar-heading">
                 Interface
             </div>
-            
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('/home/kriteria'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Kriteria</span></a>
-            </li> 
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('/home/siswa'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Siswa</span></a>
-            </li> 
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('/home/perhitungan'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Perhitungan</span></a>
-            </li> 
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -99,18 +99,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -119,132 +115,184 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>   
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle"
-                                    src="<?= base_url()?>/assets/img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="<?= base_url() ?>/assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
                         </li>
 
                     </ul>
-                </nav> 
-    </div>
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                </nav>
+            </div>
+            <!-- End of Topbar -->
+            <?php $hasil=[] ?>
+            <?php foreach($siswa as $value): ?>
+                <?php 
+                    array_push($hasil, hitungHasil([
+                        array_keys($value)[6] => hitungByKriteria('Tanggungan Orang Tua', $value['tanggungan_orang_tua'], $siswa),
+                        array_keys($value)[7] => hitungByKriteria('Penghasilan Orang Tua', $value['penghasilan_orang_tua'], $siswa),
+                        array_keys($value)[8] => hitungByKriteria('Nilai Kehadiran', $value['nilai_kehadiran'], $siswa),
+                        array_keys($value)[9] => hitungByKriteria('Nilai Rata-rata rapot', $value['nilai_rata-rata_rapot'], $siswa),
+                        array_keys($value)[10] => hitungByKriteria('Peringkat kelas', $value['peringkat_kelas'], $siswa)
+                    ]))
+                ?>
+            <?php endforeach; ?>
+
+            <?php foreach($hasil as $key => $value): ?>
+                <?php $siswa[$key]['hasil'] = $value ?>
+            <?php endforeach; ?>
+
+            <!-- php sort siswa by hasil -->
+            <?php usort($siswa, function($a, $b) {
+                return $b['hasil'] <=> $a['hasil'];
+            }); ?>
+
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
                 <div class="isi" style="background-color: white !important">
-                
                     <!-- Page Heading -->
-                    <table id="table_id" class="table table-striped">
-                    <thead>
-                            <tr>
-                                <th>Ranking</th>
-                                <th>NIS Siswa</th>
-                                <th>Nama Siswa</th>
-                                <th>Hasil Perhitungan</th>
-                                <th>Tahun Masuk</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($siswa as $data_siswa) : ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <div class="container-fluid">
+                        <div class="isi" style="background-color: white !important">
+                            <table id="table_id" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>Ranking</td>
+                                        <td>NIS siswa</td>
+                                        <td>Nama siswa</td>
+                                        <td>Hasil</td>
+                                        <td>periode</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php $n=1 ?>
+                                    <!-- if = (?) else (:) -->
+                                    <?php foreach ($siswa as $value) : ?>
+                                        <tr>
+                                            <!-- sort siswa by hasil -->
+
+                                            <td><?= $n++ ?></td>
+                                            <td><?= $value['nis_siswa']; ?></td>
+                                            <td><?= $value['nama_siswa']; ?></td>
+                                            <td>
+                                                <?= hitungHasil([
+                                                    array_keys($value)[6] => hitungByKriteria('Tanggungan Orang Tua', $value['tanggungan_orang_tua'], $siswa),
+                                                    array_keys($value)[7] => hitungByKriteria('Penghasilan Orang Tua', $value['penghasilan_orang_tua'], $siswa),
+                                                    array_keys($value)[8] => hitungByKriteria('Nilai Kehadiran', $value['nilai_kehadiran'], $siswa),
+                                                    array_keys($value)[9] => hitungByKriteria('Nilai Rata-rata rapot', $value['nilai_rata-rata_rapot'], $siswa),
+                                                    array_keys($value)[10] => hitungByKriteria('Peringkat kelas', $value['peringkat_kelas'], $siswa)
+                                                ]) ?>
+                                            </td>
+                                            <td><?= $value['periode']; ?></td>
+
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
-                </div>
-                <!-- /.container-fluid -->
-            
-            <!-- End of Main Content -->
+                    <!-- /.container-fluid -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2022</span>
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2022</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
-        </div>
-    </div>
 
-    
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url()?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url()?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+            <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url()?>/assets/js/sb-admin-2.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?= base_url()?>/assets/vendor/chart.js/Chart.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="<?= base_url()?>/assets/js/demo/chart-area-demo.js"></script>
-    <script src="<?= base_url()?>/assets/js/demo/chart-pie-demo.js"></script>
-    <!-- Data Tables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+            <!-- Page level plugins -->
+            <script src="<?= base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
 
-    <script>
-        $(document).ready( function () {
-            $('#table_id').DataTable();
-        } );
-    </script>
+            <!-- Page level custom scripts -->
+            <script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
+            <script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
+            <!-- Data Tables -->
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+            <script>
+                $(document).ready(function() {
+                    var t = $('#table_id').DataTable({
+                        // "order": [
+                        //     [3, "desc"]
+                        // ],
+                        // "ordering": true,
+                        // "orderable": true,
+                    });
+                    // t.on('order.dt search.dt', function() {
+                    //     let i = 1;
+
+                    //     t.cells(null, 0, {
+                    //         search: 'applied',
+                    //         order: 'applied'
+                    //     }).every(function(cell) {
+                    //         this.data(i++);
+                    //     });
+                    // }).draw();
+                });
+            </script>
 </body>
 
 </html>

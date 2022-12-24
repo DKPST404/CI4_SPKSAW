@@ -144,11 +144,12 @@
                     </ul>
                 </nav> 
     </div>
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                <div class="isi" style="background-color: white !important">
-                
+    <!-- End of Topbar -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <div class="isi" style="background-color: white !important">
+            <a href="<?= base_url('add/') ?>" class="btn btn-primary" style="float: right;" role="button">Tambah Data</a>
+            
                     <!-- Page Heading -->
                     <table id="table_id" class="table table-striped">
                     <thead>

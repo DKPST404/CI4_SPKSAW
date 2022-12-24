@@ -164,7 +164,7 @@
                         <div class="row mb-3">
                             <div class="col-xl-3 col-md-6 mb-4" style="margin-left: 30px;">
                                 <div class="card h-100">
-                                    <a href="<?= base_url('/kriteria'); ?> " class="stretched-link"></a>
+                                    <a href="<?= base_url('/home/kriteria'); ?> " class="stretched-link"></a>
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -183,7 +183,7 @@
 
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card h-100">
-                                    <a href="<?= base_url('/siswa'); ?>" class="stretched-link"></a>
+                                    <a href="<?= base_url('/home/siswa'); ?>" class="stretched-link"></a>
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
@@ -202,7 +202,7 @@
 
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card h-100">
-                                    <a href="<?= base_url('/perhitungan'); ?>" class="stretched-link"></a>
+                                    <a href="<?= base_url('/home/perhitungan'); ?>" class="stretched-link"></a>
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div class="col mr-2">
