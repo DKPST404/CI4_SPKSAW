@@ -101,5 +101,9 @@
                         </div>
                     </section>
                 </div>
-                
+                <script>
+                $(document).ready(function() {
+                    $('#table_id').DataTable();
+                });
+            </script>
                 <?= $this->endSection(); ?>
