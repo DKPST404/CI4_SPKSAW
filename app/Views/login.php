@@ -48,7 +48,7 @@
                                     </div>
                                 <?php } ?>
 
-                                <form action="/login" method="post">
+                                <form action="/login/login" method="post">
                                     <div class="form-group first">
                                         <label for="username">Username</label>
                                         <input type="text" name="username" class="form-control" id="username" required autofocus>

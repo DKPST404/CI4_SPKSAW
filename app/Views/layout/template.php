@@ -54,17 +54,17 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/home/kriteria'); ?>">
+                <a class="nav-link" href="<?= base_url('/kriteria'); ?>">
                     <i class="fas fa-fw fa-pencil-alt"></i>
                     <span>Kriteria</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/home/siswa'); ?>">
+                <a class="nav-link" href="<?= base_url('/siswa'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Siswa</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('/home/perhitungan'); ?>">
+                <a class="nav-link" href="<?= base_url('/perhitungan'); ?>">
                     <i class="fas fa-fw fa-print"></i>
                     <span>Perhitungan</span></a>
             </li>
@@ -79,16 +79,21 @@
 
         </ul>
         <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+            
             <!-- Main Content -->
             <div id="content">
-
+                
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                    
+                    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                        <ol class="breadcrumb mt-3"">
+                            <li class="breadcrumb-item"><a href="<?= base_url('/home'); ?>">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"></a><?= $slug; ?></li>
+                        </ol>
+                    </nav>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
@@ -127,7 +132,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -151,72 +156,72 @@
 
                 <?= $this->renderSection('content'); ?>
 
-                      <!-- Footer -->
-                      <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright © <?= date("Y") ?> by <a href="#">Diki Pangestu</span>
-                            </div>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright © <?= date("Y") ?> by <a href="#">Diki Pangestu</span>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Page Wrapper -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+        </div>
+        <!-- End of Page Wrapper -->
 
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="login.html">Logout</a>
-                        </div>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-            <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
 
-            <!-- Page level plugins -->
-            <script src="<?= base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="<?= base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
-            <script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
-            <!-- Data Tables -->
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
+        <script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
+        <!-- Data Tables -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 
-            <script>
-                $(document).ready(function() {
-                    $('#table_id').DataTable();
-                });
-            </script>
+        <script>
+            $(document).ready(function() {
+                $('#table_id').DataTable();
+            });
+        </script>
 </body>
 
-</html>              
+</html>
