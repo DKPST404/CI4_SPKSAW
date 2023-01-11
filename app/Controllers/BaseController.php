@@ -37,6 +37,9 @@ abstract class BaseController extends Controller
      */
     protected $helpers = ['find_db', 'hitung_saw'];
 
+    protected $validation;
+    protected $session;
+
     /**
      * Constructor.
      */
@@ -47,6 +50,9 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = \Config\Services::session();
+        $this->session      = \Config\Services::session();
+        $this->validation 	= \Config\Services::validation();
+
+        // session_start();
     }
 }

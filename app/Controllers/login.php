@@ -44,10 +44,10 @@ class Login extends BaseController
 
                     return redirect()->to('/');
                 } else {
-                    $this->session->setFlashdata('message', 'Tidak dapat login');
+                    $this->session->setFlashdata('message', 'Password Salah!');
                 }
             } else {
-                $this->session->setFlashdata('message', 'Tidak dapat login');
+                $this->session->setFlashdata('message', 'Username Salah!');
             }
         } else {
             $this->session->setFlashdata('errors', $this->validation->getErrors());

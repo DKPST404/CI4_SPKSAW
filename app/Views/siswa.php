@@ -5,7 +5,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="isi" style="background-color: white !important">
-        <a href="<?= base_url('/home/addsiswa') ?>" class="btn btn-primary mb-3" style="float: right;" role="button">Tambah Data</a>
+        <a href="<?= base_url('/siswa/add') ?>" class="btn btn-primary mb-3" style="float: right;" role="button">Tambah Data</a>
 
         <!-- Page Heading -->
         <table id="table_id" class="table table-striped">

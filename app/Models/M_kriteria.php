@@ -13,5 +13,5 @@ class M_kriteria extends Model
 
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['id_kriteria', 'nama_kriteria', 'bobot_kriteria','jenis_kriteria'];
+    protected $allowedFields = ['id_kriteria', 'nama_kriteria', 'bobot_kriteria','jenis_kriteria', 'status_kriteria'];
 }

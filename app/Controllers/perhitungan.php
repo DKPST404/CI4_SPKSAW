@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 class perhitungan extends BaseController
 {
+    protected $M_siswa;
+    protected $M_kriteria;
+    
     public function __construct()
     {
         $this->M_siswa = new \App\Models\M_siswa();
@@ -13,6 +16,13 @@ class perhitungan extends BaseController
     }
     public function index()
     {
+        if(!isset($_SESSION['verify_login'])){
+            return redirect()->to(base_url('/login'));
+        } else {
+            if (!session()->get('verify_login')) {
+                return redirect()->to(base_url('/login'));
+            }
+        }
         $data = [
             'title' => 'Perhitungan',
             'slug' =>  "Data Perhitungan",
