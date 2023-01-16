@@ -56,7 +56,6 @@ class siswa extends BaseController
     public function save()
     {
         $data = [
-            'slug'           =>  "Tambah Data",
             'nis_siswa'      => $this->request->getPost('nis_siswa'),
             'nama_siswa'     => $this->request->getPost('nama_siswa'),
             'kelas_siswa'    => $this->request->getPost('kelas_siswa'),
@@ -65,6 +64,12 @@ class siswa extends BaseController
 
         ];
         // dd($_POST);
+        $validasi_nis = $this->M_siswa->where('nis_siswa', $data['nis_siswa'])->first();
+
+        if ($validasi_nis) {
+            session()->setFlashdata('pesan', 'NIS Sudah Tersedia.');
+            return redirect()->to('/siswa/add');
+        }
         $this->M_siswa->insert($data);
         return redirect()->to('/siswa');
     }
@@ -105,6 +110,8 @@ class siswa extends BaseController
 
     public function delete()
     {
-        
+        $id = $this->request->uri->getSegment(3);
+        $this->M_siswa->delete($id);
+        return redirect()->to('/siswa');
     }
 }

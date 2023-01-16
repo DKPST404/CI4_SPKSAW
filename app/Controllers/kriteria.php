@@ -66,7 +66,10 @@ class Kriteria extends BaseController
             'nilai_kriteria' => $this->request->getPost('nilai_kriteria'),
         ];
         // dd($data);
+        
         $this->M_kriteria->insert($data);
+        
+        session()->setFlashdata('pesan', 'Data Berhasil ditambah.');
         return redirect()->to('/kriteria');
     }
     
@@ -100,6 +103,13 @@ class Kriteria extends BaseController
         ];
         // dd($data);
         $this->M_kriteria->update($id, $data);
+        return redirect()->to('/kriteria');
+    }
+    public function delete()
+    {
+        $id = $this->request->uri->getSegment(3);
+        $this->M_kriteria->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil dihapus.');
         return redirect()->to('/kriteria');
     }
 }

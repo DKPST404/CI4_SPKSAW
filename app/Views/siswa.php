@@ -21,9 +21,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($siswa as $data_siswa) : ?>
+                <?php foreach ($siswa as $key => $data_siswa) : ?>
                     <tr>
-                        <td><?= $data_siswa['id_siswa'] ?></td>
+                        <td><?= $key + 1; ?></td>
                         <td><?= $data_siswa['nis_siswa'] ?></td>
                         <td><?= $data_siswa['nama_siswa'] ?></td>
                         <td><?= $data_siswa['kelas_siswa'] ?></td>
@@ -31,7 +31,7 @@
                         <td><?= $data_siswa['periode'] ?></td>
                         <td>
                             <a href="<?= base_url('siswa/edit/' . $data_siswa['id_siswa']) ?>" class="btn btn-warning">Edit</a>
-                            <a href="<?= base_url('siswa/delete/' . $data_siswa['id_siswa']) ?>" class="btn btn-danger">Delete</a>
+                            <a href="<?= base_url('siswa/delete/' . $data_siswa['id_siswa']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Yakin akan dihapus?')">Delete</a>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

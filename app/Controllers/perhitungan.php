@@ -23,13 +23,42 @@ class perhitungan extends BaseController
                 return redirect()->to(base_url('/login'));
             }
         }
-        $data = [
-            'title' => 'Perhitungan',
-            'slug' =>  "Data Perhitungan",
-            'kriteria' => $this->M_kriteria->findAll(),
-            'siswa' => $this->M_siswa->findAll(),
-        ];
-        // dd($data);
-        return view('perhitungan', $data);
+
+        $bobot = [];
+        $bk = $this->M_kriteria->select('bobot_kriteria')->where('status_kriteria', 'aktif')->findAll();
+        foreach ($bk as $key => $value) {
+            $bobot[] = $value['bobot_kriteria'];
+        }
+
+        if($this->request->getMethod() == 'post'){
+            $periode = $this->request->getPost('periode');
+            $jml = $this->request->getPost('jml');
+            if ($periode == null && $jml == null) {
+                return redirect()->to(base_url('/perhitungan'));
+            } else {
+                $data = [
+                    'title' => 'Perhitungan',
+                    'slug' =>  "Data Perhitungan",
+                    'kriteria' => $this->M_kriteria->findAll(),
+                    'siswa' => $this->M_siswa->where('periode', $periode)->findAll(),
+                    'periode' => $this->M_siswa->select('periode')->groupBy('periode')->findAll(),
+                    'bobot' => $bobot,
+                    'selected_periode' => $periode,
+                    'selected_jml' => $jml,
+                ];
+                return view('perhitungan', $data);
+            }
+        } else {   
+            $data = [
+                'title' => 'Perhitungan',
+                'slug' =>  "Data Perhitungan",
+                'kriteria' => $this->M_kriteria->findAll(),
+                'periode' => $this->M_siswa->select('periode')->groupBy('periode')->findAll(),
+                'bobot' => $bobot,
+                'siswa' => null,
+            ];
+            // dd($data);
+            return view('perhitungan', $data);
+        }
     }
 }

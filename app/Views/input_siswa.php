@@ -15,7 +15,8 @@
                             <div class="alert alert-primary alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                 <h6><i class="fas fa-info"></i><b> Info</b></h6> <strong><?= session()->getFlashdata('pesan'); ?></strong>
                             </div>
-                    </div> <?php endif; ?>
+                    </div> 
+                    <?php endif; ?>
                 </div>
                 <div class="col col-12 col-md-6 col-lg-6">
                     <div class="card">
@@ -61,5 +62,7 @@
         </div>
         </form>
 </div>
+</div>
 </section>
-</div> <?= $this->endSection(); ?>
+</div> 
+<?= $this->endSection(); ?>

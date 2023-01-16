@@ -17,6 +17,11 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom alert box SweetAlert -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?= base_url() ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -25,14 +30,12 @@
     <script src="<?= base_url() ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 
-<body id="page-top">
+<body id="page-top" class="sidebar-toggled">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('home'); ?>">
                 <div class="sidebar-brand-icon">
@@ -88,16 +91,16 @@
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            
+
             <!-- Main Content -->
             <div id="content">
-                
+
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    
-                    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+
+                    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" class="d-none d-md-block" aria-label="breadcrumb">
                         <ol class="breadcrumb mt-3"">
-                            <li class="breadcrumb-item"><a href="<?= base_url('/home'); ?>">Home</a></li>
+                            <li class=" breadcrumb-item"><a href="<?= base_url('/home'); ?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page"></a><?= $slug; ?></li>
                         </ol>
                     </nav>
@@ -164,7 +167,7 @@
                 <?= $this->renderSection('content'); ?>
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer" >
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Copyright © <?= date("Y") ?> by <a href="#">Diki Pangestu</span>
@@ -204,7 +207,7 @@
         </div>
 
 
-       <!-- Custom scripts for all pages-->
+        <!-- Custom scripts for all pages-->
         <script src="<?= base_url() ?>/assets/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
@@ -213,6 +216,9 @@
         <!-- Page level custom scripts -->
         <script src="<?= base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
         <script src="<?= base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
+
+        <!-- JS SweetAlert Box -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <!-- Data Tables -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
@@ -222,6 +228,23 @@
                 $('#table_id').DataTable();
             });
         </script>
+        <!-- <script type="text/javascript">
+            function contoh() {
+
+                swal({
+
+                    title: "Berhasil!",
+
+                    text: "Pop-up berhasil ditampilkan",
+
+                    icon: "success",
+
+                    button: true
+
+                });
+
+            }
+        </script> -->
 </body>
 
 </html>
