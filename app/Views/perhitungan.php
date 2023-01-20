@@ -1,6 +1,8 @@
 <?= $this->extend('layout/template'); ?>
-
 <?= $this->section('content'); ?>
+
+<?php $siswa_dapat = []; ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" class="d-block d-md-none" aria-label="breadcrumb">
@@ -13,111 +15,105 @@
     <div>
         <div class="isi" style="background-color: white !important">
             <div class="card card-body">
-                <form method="POST" action="/perhitungan" class="row gx-1 gy-2 align-items-center justify-content-end">
+                <form method="GET" action="/perhitungan/filter" class="row gx-1 gy-2 align-items-center justify-content-end">
                     <div class="col-sm-2 col-md-2 col-lg-2 mb-3">
-                        <input type="number" name="jml" id="jml" min='1' value="<?= isset($selected_jml) ? $selected_jml : 1  ?>"  placeholder="Jumlah" class="form-control">
-                    </div>    
+                        <input type="number" name="jml" id="jml" min='1' value="<?= isset($_GET['jml']) ? $_GET['jml'] : 1  ?>" placeholder="Jumlah" class="form-control">
+                    </div>
                     <div class="col-sm-2 col-md-4 col-lg-2 mb-3">
                         <select name="periode" class="custom-select" id="specificSizeSelect">
                             <option selected>Periode</option>
                             <?php foreach ($periode as $p) : ?>
-                                <option <?= isset($selected_periode) && $selected_periode == $p['periode'] ? 'selected' : '' ?> value="<?= $p['periode'] ?>"><?= $p['periode'] ?></option>
+                                <option <?= isset($_GET['periode']) && $_GET['periode'] == $p['periode'] ? 'selected' : '' ?> value="<?= $p['periode'] ?>"><?= $p['periode'] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
                     <div class="col-auto mb-3">
-                        <button type="submit" class="btn btn-primary" <?= array_sum($bobot) < 100 ? 'disabled' : '' ?>>Submit</button>
+                        <button type="submit" class="btn btn-primary" <?= $cek_bobot[0]['bobot_kriteria'] < 100 ? 'disabled' : '' ?>>Submit</button>
                     </div>
                 </form>
 
-                <?php if (array_sum($bobot) === 100) : ?>
-                    <?php if (isset($siswa)) : ?>
-                        <?php $hasil = [] ?>
-                        <?php foreach ($siswa as $value) : ?>
-                            <?php
-                            array_push($hasil, hitungHasil([
-                                array_keys($value)[6] => hitungByKriteria('Tanggungan Orang Tua', $value['tanggungan_orang_tua'], $siswa),
-                                array_keys($value)[7] => hitungByKriteria('Penghasilan Orang Tua', $value['penghasilan_orang_tua'], $siswa),
-                                array_keys($value)[8] => hitungByKriteria('Nilai Kehadiran', $value['nilai_kehadiran'], $siswa),
-                                array_keys($value)[9] => hitungByKriteria('Nilai Rata-rata rapot', $value['nilai_rata-rata_rapot'], $siswa),
-                                array_keys($value)[10] => hitungByKriteria('Peringkat kelas', $value['peringkat_kelas'], $siswa)
-                            ]))
-                            ?>
-                        <?php endforeach; ?>
-
-                        <?php foreach ($hasil as $key => $value) : ?>
-                            <?php $siswa[$key]['hasil'] = $value ?>
-                        <?php endforeach; ?>
-
-                        <!-- php sort siswa by hasil -->
-                        <?php usort($siswa, function ($a, $b) {
-                            return $b['hasil'] <=> $a['hasil'];
-                        }); ?>
-
-                        <div class="mt-3">
-                            <div class="table-responsive">
-                                <table id="table_id" class="table table-striped">
-                                    <thead>
+                <?php if ($cek_bobot[0]['bobot_kriteria'] >= 100) { ?>
+                    <?php if (isset($_GET['periode'])) { ?>
+                        <div class="table-responsive mt-3">
+                            <div class="table table-bordered">
+                                <table class="table align-items-center table-flush table-hover dataTable" id="dataTableHoverPerhitungan" role="grid" aria-describedby="dataTableHover_info">
+                                    <thead class="thead-light">
                                         <tr>
-                                            <td>Ranking</td>
-                                            <td>NIS siswa</td>
-                                            <td>Nama siswa</td>
-                                            <td>Hasil</td>
-                                            <td>periode</td>
+                                            <th>Ranking</th>
+                                            <th>NIS Siswa</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Hasil Perhitungan</th>
+                                            <th>Tahun Masuk</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
-                                        <?php $n = 1 ?>
-                                        <?php foreach ($siswa as $value) : ?>
-                                            <tr <?= $n > $selected_jml ? 'style="background-color: rgb(252 84 131 / 50%); color:black !important;"' : ''  ?>>
-                                                <td><?= $n++ ?></td>
-                                                <td><?= $value['nis_siswa']; ?></td>
-                                                <td><?= $value['nama_siswa']; ?></td>
-                                                <td>
-                                                    <?= hitungHasil([
-                                                        array_keys($value)[6] => hitungByKriteria('Tanggungan Orang Tua', $value['tanggungan_orang_tua'], $siswa),
-                                                        array_keys($value)[7] => hitungByKriteria('Penghasilan Orang Tua', $value['penghasilan_orang_tua'], $siswa),
-                                                        array_keys($value)[8] => hitungByKriteria('Nilai Kehadiran', $value['nilai_kehadiran'], $siswa),
-                                                        array_keys($value)[9] => hitungByKriteria('Nilai Rata-rata rapot', $value['nilai_rata-rata_rapot'], $siswa),
-                                                        array_keys($value)[10] => hitungByKriteria('Peringkat kelas', $value['peringkat_kelas'], $siswa)
-                                                    ]) ?>
-                                                </td>
-                                                <td><?= $value['periode']; ?></td>
+                                        <?php
+                                        foreach ($data_perhitungan as $index => $value) :
+                                            if ($_GET['jml'] >= ($index + 1)) {
+                                                $siswa_dapat[] = $value['data']->nama_siswa;
+                                            }
+                                        ?>
+                                            <tr>
+                                                <td class="<?= $_GET['jml'] >= ($index + 1) ? '' : 'text-light bg-danger' ?>">
+                                                    <?= $index + 1 ?></td>
+                                                <td class="<?= $_GET['jml'] >= ($index + 1) ? '' : 'text-light bg-danger' ?>">
+                                                    <?= $value['data']->nis_siswa ?></td>
+                                                <td class="<?= $_GET['jml'] >= ($index + 1) ? '' : 'text-light bg-danger' ?>">
+                                                    <?= $value['data']->nama_siswa ?></td>
+                                                <td class="<?= $_GET['jml'] >= ($index + 1) ? '' : 'text-light bg-danger' ?>">
+                                                    <?= number_format($value['hasil'], 6) ?></td>
+                                                <td class="<?= $_GET['jml'] >= ($index + 1) ? '' : 'text-light bg-danger' ?>">
+                                                    <?= $value['data']->periode ?></td>
                                             </tr>
-                                        <?php endforeach ?>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle mr-2"></i> <strong>Warning</strong> <br> 
-                        Bobot kriteria tidak 100%, silahkan <a href="/kriteria">cek <i class="fas fa-external-link-alt" style="font-size: 12px; margin-left: 2px; margin-right: 3px;"></i></a> kembali
-                    </div>
-                <?php endif; ?>
+                    <?php } else { ?>
+                        <b>Silahkan pilih tahun terlebih dahulu.</b>
+                    <?php } ?>
+                <?php } else { ?>
+                    <b>Silahkan masukan kriteria sampai 100% dahulu untuk mengelola data siswa</b>
+                    <div><a href="/kriteria" class="btn btn-primary">Kriteria</a></div>
+                <?php } ?>
+
+                <?php if (count($siswa_dapat) > 0) { ?>
+                    <p class="text-justify">Dari Analisa Menggunakan SAW diatas, maka dapat disimpulkan dari jumlah
+                        <?= count($data_perhitungan) ?>
+                        siswa, yang direkomendasikan bantuan sebanyak <?= isset($_GET['jml']) ? $_GET['jml'] : 0 ?> orang.
+                        Adapun
+                        nama siswa yang direkomendasikan antara lain : <b> <?= join(', ', $siswa_dapat) ?> </b></p>
+                <?php } ?>
+
             </div>
         </div>
     </div>
     <script>
         $(document).ready(function() {
-            var t = $('#table_id').DataTable({
-                // "order": [
-                //     [3, "desc"]
-                // ],
-                // "ordering": true,
-                // "orderable": true,
+            var t = $('#dataTableHoverPerhitungan').DataTable({
+                // dom: 'Bfrtip',
+                // buttons: [
+                //     'copy', 'csv', 'excel'
+                // ]
+                
+                // bootrap 5 styling dom and buttons
+                dom: '<"d-flex justify-content-between"Bf>rtip',
+                buttons: [{
+                        extend: 'copy',
+                        className: 'btn btn-outline-secondary btn-sm'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'btn btn-outline-secondary btn-sm'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'btn btn-outline-secondary btn-sm'
+                    }
+                ] 
             });
-            // t.on('order.dt search.dt', function() {
-            //     let i = 1;
-
-            //     t.cells(null, 0, {
-            //         search: 'applied',
-            //         order: 'applied'
-            //     }).every(function(cell) {
-            //         this.data(i++);
-            //     });
-            // }).draw();
         });
     </script>
     <?= $this->endSection(); ?>

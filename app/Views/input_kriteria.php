@@ -89,7 +89,7 @@
                                         <div class="col-sm-12">
                                             <div class="d-flex flex-row-reverse">
                                                 <div class="p-1">
-                                                <button class="btn btn-primary" onclick="contoh"type="submit">Simpan</button>
+                                                <button class="btn btn-primary" onclick="" type="submit">Simpan</button>
                                                 </div>
                                                 <div class="p-1">
                                                     <a href="/kriteria" class="btn btn-secondary">Kembali</a>

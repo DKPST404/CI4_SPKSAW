@@ -11,6 +11,7 @@
 
                 <div class="section-body">
                     <form action="/siswa/editSiswa" method="POST">
+                        <input type="hidden" name="id_siswa" value="<?= $siswa['id_siswa']; ?>">
                         <?= csrf_field(); ?>
                         <!-- Tabel Input -->
                         <div class="row">
@@ -48,11 +49,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Input Data Kriteria</h5>
-                                    <?php foreach ($kriteria as $value) : ?>
-                                        <div class="form-group row justify-content-between">
-                                            <label for="inputEmail3" class="col-form-label"><?= $value['nama_kriteria'] ?></label>
-                                            <div class="col-sm-7"> <input type="number" step="any" class="form-control" name="kriteria_siswa[<?= $value['id_kriteria'] ?>]" id="nis_siswa" placeholder="<?= $value['nama_kriteria'] ?> Siswa" required autofocus> </div>
-                                        </div>
+                                    <?php foreach ($kriteria as $key => $value) : ?>
+                                        <?php foreach ($kriteria_value as $kv_key => $kv_value) : ?>
+                                            <?php if($value['id_kriteria'] == $kv_value['id_kriteria']) : ?>
+                                                <div class="form-group row justify-content-between pl-3">
+                                                    <label for="inputEmail3" class="col-form-label"><?= $value['nama_kriteria'] ?></label>
+                                                    <div class="col-sm-7"> <input type="number" step="any" class="form-control" name="kriteria_siswa[<?= $value['id_kriteria'] ?>]" id="nis_siswa" placeholder="<?= $value['nama_kriteria'] ?> Siswa" value="<?= $kv_value['nilai_kriteria']; ?>" required autofocus> </div>
+                                                </div>
+                                            <?php endif ?>
+                                        <?php endforeach; ?>
                                     <?php endforeach; ?>
                                 </div>
                             </div>

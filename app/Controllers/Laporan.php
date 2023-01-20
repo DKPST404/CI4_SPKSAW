@@ -11,9 +11,10 @@ class Laporan extends BaseController
         }
 
         $data = [
-            'title' => 'Laporan',
-            'name'  => 'Laporan'
+            'title' => 'Laporan Hasil Perhitungan',
+            'name'  => 'Laporan Hasil Perhitungan',
+            'slug'  => 'Laporan'
         ];
-        return view('laporan/laporan', $data);
+        return view('laporan', $data);
     }
 }
