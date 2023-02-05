@@ -9935,6 +9935,12 @@ a:focus {
   background-size: cover;
 }
 
+.bg-gradient-custom_warna {
+  background-color: #FCC2FC;
+  background-image: linear-gradient(180deg, #FCC2FC 10%, #000 100%);
+  background-size: cover;
+}
+
 .bg-gradient-light {
   background-color: #f8f9fc;
   background-image: linear-gradient(180deg, #f8f9fc 10%, #c2cbe5 100%);
