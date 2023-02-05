@@ -47,7 +47,7 @@ class siswa extends BaseController
 
         // dd($data);
 
-        $kriteria = $this->M_kriteria->findAll();
+        $kriteria = $this->M_kriteria->where('status_kriteria', 'aktif')->findAll();
         return view('input_siswa', [
             'title' => 'Input Data Siswa',
             'slug' =>  "Input Data Siswa",
@@ -98,12 +98,14 @@ class siswa extends BaseController
             }
         }
 
+        
         $id = $this->request->uri->getSegment(3);
         $data = [
             'title' => 'Edit Siswa',
             'slug' =>  "Edit Data Siswa",
+            'id_siswa'  => $id,
             'siswa' => $this->M_siswa->where('id_siswa', $id)->first(),
-            'kriteria' => $this->M_kriteria->findAll(),
+            'kriteria' => $this->M_kriteria->where('status_kriteria', 'aktif')->findAll(),
             'kriteria_value' => $this->M_Perhitungan->where('id_siswa', $id)->findAll()
         ];
         // dd($data);
@@ -122,11 +124,22 @@ class siswa extends BaseController
             'alamat_siswa'   => $this->request->getPost('alamat_siswa'),
             'periode'        => $this->request->getPost('periode')
         ];
-        
+
         if($this->M_siswa->update($id, $data)) {
             foreach($this->request->getPost('kriteria_siswa') as $key => $kriteria){
                 // id_perhitungan
                 $idp = $this->M_Perhitungan->select('id_perhitungan')->where('id_siswa', $id)->where('id_kriteria', $key)->first();
+                
+                if ($idp == null) {
+                    $idp = [
+                        'id_siswa' => $id,
+                        'id_kriteria' => $key,
+                        'nilai_kriteria' => $kriteria
+                    ];
+                    $this->M_Perhitungan->insert($idp);
+                    continue;
+                } 
+
                 $dk = [
                     'id_siswa' => $id,
                     'id_kriteria' => $key,

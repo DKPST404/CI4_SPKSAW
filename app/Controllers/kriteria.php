@@ -83,10 +83,19 @@ class Kriteria extends BaseController
             }
         }
         $id = $this->request->uri->getSegment(3);
+
+        // get count bobot_kriteria of status_kriteria = aktif
+        $bobot = $this->M_kriteria->select('bobot_kriteria')->where('status_kriteria', 'aktif')->findAll();
+        foreach ($bobot as $key => $value) {
+            $bobot[$key] = $value['bobot_kriteria'];
+        }
+        $bobot = array_sum($bobot);
+
         $data = [
             'title' => 'Edit Kriteria',
             'slug' =>  "Edit Data Kriteria",
             'kriteria' => $this->M_kriteria->where('id_kriteria', $id)->first(),
+            'bobot' => $bobot
         ];
         // dd($data);
         return view('edit_kriteria', $data);

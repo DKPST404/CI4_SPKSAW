@@ -14,6 +14,11 @@
     <!-- Page Heading -->
     <div>
         <div class="isi" style="background-color: white !important">
+            <div class="alert alert-primary">
+                <b>Informasi !</b>
+                <div>Pastikan <b><a href="/siswa">data siswa</a></b> memiliki data yang lengkap, jika terdapat data yang belum lengkap akan mempengaruhi perhitungan !</div>
+            </div>
+
             <div class="card card-body">
                 <form method="GET" action="/perhitungan/filter" class="row gx-1 gy-2 align-items-center justify-content-end">
                     <div class="col-sm-2 col-md-2 col-lg-2 mb-3">
@@ -28,11 +33,11 @@
                         </select>
                     </div>
                     <div class="col-auto mb-3">
-                        <button type="submit" class="btn btn-primary" <?= $cek_bobot[0]['bobot_kriteria'] < 100 ? 'disabled' : '' ?>>Submit</button>
+                        <button type="submit" class="btn btn-primary" <?= $cek_bobot[0]['bobot_kriteria'] != 100 ? 'disabled' : '' ?>>Submit</button>
                     </div>
                 </form>
 
-                <?php if ($cek_bobot[0]['bobot_kriteria'] >= 100) { ?>
+                <?php if ($cek_bobot[0]['bobot_kriteria'] == 100) { ?>
                     <?php if (isset($_GET['periode'])) { ?>
                         <div class="table-responsive mt-3">
                             <div class="table table-bordered">
@@ -71,12 +76,17 @@
                                 </table>
                             </div>
                         </div>
-                    <?php } else { ?>
-                        <b>Silahkan pilih tahun terlebih dahulu.</b>
                     <?php } ?>
                 <?php } else { ?>
-                    <b>Silahkan masukan kriteria sampai 100% dahulu untuk mengelola data siswa</b>
-                    <div><a href="/kriteria" class="btn btn-primary">Kriteria</a></div>
+                    <div class="alert alert-warning">
+                        <strong>Perhatian !</strong>
+                        <div>
+                            Bobot kriteria yang anda miliki saat ini <?= $cek_bobot[0]['bobot_kriteria'] > 100 ? "<b>terlalu banyak</b>" : "<b>Kurang</b>"; ?>, dengan nilai <?= $cek_bobot[0]['bobot_kriteria'] ?>.
+                        </div>
+                        <div>
+                            pastikan bobot kriteria tidak lebih dan tidak kurang dari 100, jika terlalu banyak atau kurang, maka perhitungan tidak akan berjalan dengan baik.
+                        </div>
+                    </div>
                 <?php } ?>
 
                 <?php if (count($siswa_dapat) > 0) { ?>
@@ -97,7 +107,7 @@
                 // buttons: [
                 //     'copy', 'csv', 'excel'
                 // ]
-                
+
                 // bootrap 5 styling dom and buttons
                 dom: '<"d-flex justify-content-between"Bf>rtip',
                 buttons: [{
@@ -112,7 +122,7 @@
                         extend: 'excel',
                         className: 'btn btn-outline-secondary btn-sm'
                     }
-                ] 
+                ]
             });
         });
     </script>

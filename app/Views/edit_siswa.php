@@ -30,7 +30,7 @@
                                         <div class="col-sm-10"> <input type="number" class="form-control" name="nis_siswa" id="nis_siswa" value="<?= $siswa !== null ? $siswa['nis_siswa'] : ''; ?>" placeholder="NIS Siswa" readonly="true" required autofocus> </div>
                                     </div>
                                     <div class="form-group row"> <label for="nama_siswa" class="col-sm-2 col-form-label">Nama</label>
-                                        <div class="col-sm-10"> <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" value="<?= $siswa !== null ? $siswa['nama_siswa'] : ''; ?>"placeholder="Nama Siswa" required> </div>
+                                        <div class="col-sm-10"> <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" value="<?= $siswa !== null ? $siswa['nama_siswa'] : ''; ?>" placeholder="Nama Siswa" required> </div>
                                     </div>
                                     <div class="form-group row"> <label for="kelas_siswa" class="col-sm-2 col-form-label">Jurusan</label>
                                         <div class="col-sm-10"> <select class="form-control" id="kelas_siswa" name="kelas_siswa" required> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="X IPA <?= $i ?>">X IPA <?= $i ?></option> <?php endfor; ?> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="X IPS <?= $i ?>">X IPS <?= $i ?></option> <?php endfor; ?> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="XI IPA <?= $i ?>">XI IPA <?= $i ?></option> <?php endfor; ?> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="XI IPS <?= $i ?>">XI IPS <?= $i ?></option> <?php endfor; ?> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="XII IPA <?= $i ?>">XII IPA <?= $i ?></option> <?php endfor; ?> <?php for ($i = 1; $i <= 5; $i++) : ?> <option value="XII IPS <?= $i ?>">XII IPS <?= $i ?></option> <?php endfor; ?> </select> </div>
@@ -43,21 +43,17 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <!-- Data Kriteria -->
                         <div class="col col-12 col-md-6 col-lg-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Input Data Kriteria</h5>
                                     <?php foreach ($kriteria as $key => $value) : ?>
-                                        <?php foreach ($kriteria_value as $kv_key => $kv_value) : ?>
-                                            <?php if($value['id_kriteria'] == $kv_value['id_kriteria']) : ?>
-                                                <div class="form-group row justify-content-between pl-3">
-                                                    <label for="inputEmail3" class="col-form-label"><?= $value['nama_kriteria'] ?></label>
-                                                    <div class="col-sm-7"> <input type="number" step="any" class="form-control" name="kriteria_siswa[<?= $value['id_kriteria'] ?>]" id="nis_siswa" placeholder="<?= $value['nama_kriteria'] ?> Siswa" value="<?= $kv_value['nilai_kriteria']; ?>" required autofocus> </div>
-                                                </div>
-                                            <?php endif ?>
-                                        <?php endforeach; ?>
+                                        <div class="form-group row justify-content-between pl-3">
+                                            <label for="inputEmail3" class="col-form-label"><?= $value['nama_kriteria'] ?></label>
+                                            <div class="col-sm-7"> <input type="number" step="any" class="form-control" name="kriteria_siswa[<?= $value['id_kriteria'] ?>]" id="nis_siswa" placeholder="<?= $value['nama_kriteria'] ?> Siswa" value="<?= !getKriteriaValue($value['id_kriteria'], $id_siswa) ? '' : getKriteriaValue($value['id_kriteria'], $id_siswa)[0]['nilai_kriteria'] ?>" required autofocus> </div>
+                                        </div>
                                     <?php endforeach; ?>
                                 </div>
                             </div>

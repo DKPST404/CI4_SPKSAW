@@ -74,8 +74,8 @@
                     SEKOLAH MENENGAH ATAS NEGERI 1 KESESI
                 </h5>
                 <center>
-                    <p class="text-xs mb-0 fw-bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis.</p>
-                    <p class="text-xs mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis.</p>
+                    <p class="text-xs mb-0 fw-bold">Jl. Raya Kaibahan Kesesi Telp. (0285) 4483086 Kab. Pekalongan - 51162</p>
+                    <p class="text-xs mb-0">Website : www.sman1kesesi.sch.id  email : smakesesipekalongan@gmail.com</p>
                 </center>
             </div>
         </div>
