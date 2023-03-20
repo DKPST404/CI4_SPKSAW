@@ -28,12 +28,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $bobot=[] ?>
+                <?php $bobot = [] ?>
                 <?php foreach ($kriteria as $key => $k) : ?>
-                    <?php 
-                        if($k['status_kriteria'] == 'aktif') {
-                            $bobot[] = $k["bobot_kriteria"];
-                        }    
+                    <?php
+                    if ($k['status_kriteria'] == 'aktif') {
+                        $bobot[] = $k["bobot_kriteria"];
+                    }
                     ?>
                     <tr>
                         <td><?= $key + 1; ?></td>
